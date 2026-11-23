@@ -1,0 +1,10 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1776705264468,19,Neispravna komanda KRAJ 1,200,OK,Grupa dretvi za administraciju 1-1,text,true,,9,0,1,1,null,19,0,14
+1776705264504,2,Neispravna komanda KRAJ 2,200,OK,Grupa dretvi za administraciju 1-1,text,true,,9,0,1,1,null,2,0,1
+1776705264507,2,Neispravna komanda KRAJ 3,200,OK,Grupa dretvi za administraciju 1-1,text,true,,9,0,1,1,null,2,0,1
+1776705264512,2,Neispravna komanda PING 1,200,OK,Grupa dretvi za administraciju 1-1,text,true,,9,0,1,1,null,1,0,0
+1776705264515,7,Neispravna komanda PING 2,200,OK,Grupa dretvi za administraciju 1-1,text,true,,9,0,1,1,null,7,0,5
+1776705264524,4,Ispravna komanda PING,200,OK,Grupa dretvi za administraciju 1-1,text,true,,3,0,1,1,null,4,0,1
+1776705264532,2,Neispravna komanda REZERVACIJE PONIŠTI 1,200,OK,Grupa dretvi za administraciju 1-1,text,true,,9,0,1,1,null,2,0,1
+1776705264536,2,Neispravna komanda REZERVACIJE PONIŠTI 2,200,OK,Grupa dretvi za administraciju 1-1,text,true,,9,0,1,1,null,2,0,0
+1776705264541,2,Ispravna komanda REZERVACIJE PONIŠTI,200,OK,Grupa dretvi za administraciju 1-1,text,true,,3,0,1,1,null,2,0,0

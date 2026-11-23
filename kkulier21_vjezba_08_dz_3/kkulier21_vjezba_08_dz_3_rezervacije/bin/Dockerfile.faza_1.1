@@ -1,0 +1,8 @@
+FROM eclipse-temurin:25-jre
+
+COPY ./target/dkermek_vjezba_06_rezervacije-1.1.0.jar /usr/app/
+WORKDIR /usr/app
+
+EXPOSE 8012
+
+ENTRYPOINT ["bash"]

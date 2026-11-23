@@ -1,0 +1,27 @@
+docker build -f Dockerfile.faza_1.1 -t posluzitelj_rezervacije:faza_1 .
+
+docker run -it -d --name=PosluziteljRezervacije posluzitelj_rezervacije:faza_1
+
+docker exec -it PosluziteljRezervacije /bin/bash
+
+java -jar dkermek_vjezba_06_rezervacije-1.1.0.jar NWTiS_04_rezervacije.txt
+
+docker cp NWTiS_04_rezervacije.txt PosluziteljRezervacije:/usr/app
+
+docker cp target/libs/ PosluziteljRezervacije:/usr/app/lib
+
+docker run -it -d -p 8012:8012 --name=PosluziteljRezervacije posluzitelj_rezervacije:faza_1
+
+docker build -f Dockerfile.faza_2.1 -t posluzitelj_rezervacije:faza_2 .
+
+docker run -it -d -p 8012:8012 --name=PosluziteljRezervacije posluzitelj_rezervacije:faza_2
+
+docker build -f Dockerfile.faza_2.2 -t posluzitelj_rezervacije:faza_2 .
+
+docker build -f Dockerfile.faza_3.1 -t posluzitelj_rezervacije:faza_3 .
+
+docker run -it -d -p 8012:8012 --name=PosluziteljRezervacije posluzitelj_rezervacije:faza_3
+
+docker build -f Dockerfile.faza_3.2 -t jmeter:faza_3 .
+
+docker run -it -d --mount type=bind,source="$(pwd)"/podaci,target=/usr/app/podaci --name=jmeter jmeter:faza_3

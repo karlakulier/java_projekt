@@ -1,0 +1,10 @@
+FROM ubuntu:latest
+
+COPY ./target/maven-jlink/default/ /usr/app/
+COPY ./NWTiS_04_rezervacije.txt /usr/app/
+
+WORKDIR /usr/app
+
+EXPOSE 8000
+
+CMD ["bin/java", "-m", "dkermek_vjezba_06_rezervacije/edu.unizg.foi.nwtis.dkermek.vjezba_06.PosluziteljRezervacije", "NWTiS_04_rezervacije.txt"]

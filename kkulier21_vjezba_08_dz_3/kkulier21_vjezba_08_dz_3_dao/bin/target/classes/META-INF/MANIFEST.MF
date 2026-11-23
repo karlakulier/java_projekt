@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Java-Version: 25
+Build-Jdk-Spec: 21
+Class-Path: lib/kkulier21_vjezba_08_dz_3_podaci-1.4.0.jar
+Created-By: Maven Integration for Eclipse
+

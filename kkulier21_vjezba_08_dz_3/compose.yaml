@@ -1,0 +1,101 @@
+name: kkulier21_docker_compose
+
+networks:
+   mreza:
+      name: kkulier21_mreza
+      external: true
+
+volumes:
+   svezak:
+      name: kkulier21_svezak
+      external: true
+
+services:
+
+   kontrola:
+      image: kkulier21_kontrola:latest
+      container_name: kkulier21_kontrola
+      build:
+         context: kkulier21_vjezba_08_dz_3_kontrola
+      volumes:
+      -  type: volume
+         source: svezak
+         target: /usr/app/podaci
+         volume:
+            nocopy: true
+#      restart: unless-stopped
+      networks:
+         mreza:
+            ipv4_address: 20.24.5.2
+
+   rezervacije:
+      image: kkulier21_rezervacije:latest
+      container_name: kkulier21_rezervacije
+      build:
+         context: kkulier21_vjezba_08_dz_3_rezervacije
+      volumes:
+      -  type: volume
+         source: svezak
+         target: /usr/app/podaci
+         volume:
+            nocopy: true
+#      restart: unless-stopped
+      networks:
+         mreza:
+            ipv4_address: 20.24.5.3
+      depends_on:
+      - kontrola
+
+   rezervacije_2:
+      image: kkulier21_rezervacije:latest
+      container_name: kkulier21_rezervacije_2
+      volumes:
+      -  type: volume
+         source: svezak
+         target: /usr/app/podaci
+         volume:
+            nocopy: true
+      networks:
+         mreza:
+            ipv4_address: 20.24.5.4
+      depends_on:
+      - kontrola
+      - rezervacije
+
+   servisi:
+      image: kkulier21_servisi:latest
+      container_name: kkulier21_servisi
+      build:
+         context: kkulier21_vjezba_08_dz_3_servisi
+      volumes:
+      -  type: volume
+         source: svezak
+         target: /usr/app/podaci
+         volume:
+            nocopy: true
+#      restart: unless-stopped
+      networks:
+         mreza:
+            ipv4_address: 20.24.5.5
+      depends_on:
+      - kontrola
+
+   mikroservisi:
+      image: kkulier21_mikroservisi:latest
+      container_name: kkulier21_mikroservisi
+      build:
+         context: kkulier21_vjezba_08_dz_3_mikroservisi
+      volumes:
+      -  type: volume
+         source: svezak
+         target: /usr/app/podaci
+         volume:
+            nocopy: true
+#      restart: unless-stopped
+      networks:
+         mreza:
+            ipv4_address: 20.24.5.8
+      depends_on:
+      - servisi
+      - rezervacije
+      - rezervacije_2

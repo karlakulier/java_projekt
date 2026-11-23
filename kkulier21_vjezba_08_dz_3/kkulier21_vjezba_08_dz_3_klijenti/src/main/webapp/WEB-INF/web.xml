@@ -1,0 +1,51 @@
+<web-app version="6.0"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Privatni dio rezervacije</web-resource-name>
+            <url-pattern>/mvc/rezervacije/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>nwtis</role-name>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Privatni dio avio tvrtke</web-resource-name>
+            <url-pattern>/mvc/aviotvrtke/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>nwtis</role-name>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin stranice</web-resource-name>
+            <url-pattern>/mvc/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>nwtis</role-name>
+    </security-role>
+
+</web-app>
